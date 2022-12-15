@@ -42,11 +42,11 @@ public class fetchApi {
      customer.setMobil("0123556677");
      body.setCustomer(customer);
      //continue req
-      body.setAmount(150.01);
+      body.setAmount(150.00);
       body.setSendingDate("2022-12-12");
         body.setExpiryDate("2023-02-28T13:19:17.000Z");
   body.setReleaseDate("2022-12-12T13:16:50.668Z");
-  body.setBusinessReference("83");
+  body.setBusinessReference("99");
   body.setNote("invoice description");
   body.setCommunicationLang("en-gb");
   body.setCommunicationMethod("SMS");
@@ -65,8 +65,8 @@ public class fetchApi {
      items.setDiscount(discount);
 
      body.setPaymentType("PUSH_TO_CUSTOMER");
-     body.setTaxes("[]");
-     body.setPreferredPaymentMethod("CARD");
+
+
 
 
 
@@ -109,14 +109,14 @@ public class fetchApi {
           "        \n" +
           "}";
 */
- // Gson g = new Gson();
+  Gson g = new Gson();
  //JsonObject js = g.fromJson(s,JsonObject.class);
  String json = new ObjectMapper().writeValueAsString(body);
 
 
   //HttpEntity<String> entity = new HttpEntity<String>(s, headers);
 
-    // System.out.println(json);
+     System.out.println(json);
      HttpEntity<String> entity = new HttpEntity<String>(json, headers);
   ResponseEntity<String> res = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
   System.out.println(res.getBody());

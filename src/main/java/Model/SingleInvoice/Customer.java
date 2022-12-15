@@ -2,9 +2,12 @@ package Model.SingleInvoice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonFactory;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 public class Customer  {
     @JsonProperty("name")
     private String name ;
@@ -13,27 +16,4 @@ public class Customer  {
     @JsonProperty("mobile")
     private String mobil ;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobil() {
-        return mobil;
-    }
-
-    public void setMobil(String mobil) {
-        this.mobil = mobil;
-    }
 }
