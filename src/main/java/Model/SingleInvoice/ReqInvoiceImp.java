@@ -30,7 +30,7 @@ public class ReqInvoiceImp  {
     @JsonProperty("paymentType")
     private String    paymentType ;
     @JsonProperty("taxes")
-    private int taxes;
+    private String taxes;
     @JsonProperty("preferredPaymentMethod")
    private String preferredPaymentMethod ;
 
@@ -57,13 +57,7 @@ public class ReqInvoiceImp  {
         this.paymentType = paymentType;
     }
 
-    public int getTaxes() {
-        return taxes;
-    }
 
-    public void setTaxes(int taxes) {
-        this.taxes = taxes;
-    }
 
     public Customer getCustomer() {
         return customer;
@@ -147,6 +141,14 @@ public class ReqInvoiceImp  {
 
     public void setPreferredPaymentMethod(String preferredPaymentMethod) {
         this.preferredPaymentMethod = preferredPaymentMethod;
+    }
+
+    public String getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(String taxes) {
+        this.taxes = taxes;
     }
     /*
 
