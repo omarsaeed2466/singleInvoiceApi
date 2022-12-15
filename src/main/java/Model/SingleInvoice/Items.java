@@ -20,42 +20,52 @@ public class Items   {
     private String nameAr ;
     @JsonProperty("discount")
     private Discount discount ;
+
+    public String getItemCode() {
+        return itemCode;
+    }
+
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
+    }
+
+    public int getPurchasedQuantity() {
+        return purchasedQuantity;
+    }
+
+    public void setPurchasedQuantity(int purchasedQuantity) {
+        this.purchasedQuantity = purchasedQuantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameAr() {
+        return nameAr;
+    }
+
+    public void setNameAr(String nameAr) {
+        this.nameAr = nameAr;
+    }
+
     public Discount getDiscount() {
         return discount;
     }
 
     public void setDiscount(Discount discount) {
         this.discount = discount;
-    }
-
-    public String getItemCode() {
-        return itemCode;
-    }
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
-    }
-    public int getPurchasedQuantity() {
-        return purchasedQuantity;
-    }
-    public void setPurchasedQuantity(int purchasedQuantity) {
-        this.purchasedQuantity = purchasedQuantity;
-    }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public String getNameEn() {
-        return nameEn;
-    }
-    public void setNameEn(String nameEn) {
-        this.nameEn = nameEn;
-    }
-    public String getNameAr() {
-        return nameAr;
-    }
-    public void setNameAr(String nameAr) {
-        this.nameAr = nameAr;
     }
 }

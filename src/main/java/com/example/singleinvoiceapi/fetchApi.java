@@ -42,32 +42,31 @@ public class fetchApi {
      customer.setMobil("01008532123");
      body.setCustomer(customer);
      //continue req
-  body.setAmount(150.77);
-  body.setSendingDate("2022-12-12");
-  body.setExpiryDate("2023-02-28T13:19:17.000Z");
+      body.setAmount(150.77);
+      body.setSendingDate("2022-12-12");
+        body.setExpiryDate("2023-02-28T13:19:17.000Z");
   body.setReleaseDate("2022-12-12T13:16:50.668Z");
-  body.setBusinessReference("97");
+  body.setBusinessReference("22");
   body.setNote("invoice description");
   body.setCommunicationLang("en-gb");
   body.setCommunicationMethod("SMS");
   body.setAlertMerchantUponExpiry(false);
-
-  body.setPaymentType("PUSH_TO_CUSTOMER");
- body.setTaxes(0);
- body.setPreferredPaymentMethod("CARD");
   // items
   Items items = new Items();
   items.setItemCode("b2f35ed2d39e462abd5e4b1129a7305d");
   items.setPurchasedQuantity(2);
-  items.setPrice(150);
-  //discount
-  Discount discount = new Discount();
-  discount.setType("FLAT");
-  discount.setValue( 20);
-     items.setDiscount(discount);
+  items.setPrice(150.55);
      items.setNameEn("description 1");
      items.setNameAr("product description 1");
+  //discount
+     Discount discount = new Discount();
+     discount.setType("FLAT");
+     discount.setValue( 20);
+     items.setDiscount(discount);
 
+     body.setPaymentType("PUSH_TO_CUSTOMER");
+     body.setTaxes(0);
+     body.setPreferredPaymentMethod("CARD");
 
 
 

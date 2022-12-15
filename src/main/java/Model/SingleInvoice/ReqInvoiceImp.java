@@ -33,6 +33,7 @@ public class ReqInvoiceImp  {
     private int taxes;
     @JsonProperty("preferredPaymentMethod")
    private String preferredPaymentMethod ;
+
     public ReqInvoiceImp() {
     }
 
