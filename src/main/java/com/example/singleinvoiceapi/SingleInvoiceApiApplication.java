@@ -9,6 +9,8 @@ public class SingleInvoiceApiApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(SingleInvoiceApiApplication.class, args);
+
+
     }
 
 }

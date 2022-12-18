@@ -1,20 +1,21 @@
 package com.example.singleinvoiceapi.Repository;
 
+import java.util.List;
+
 public interface RequestRepository {
-    int save();
 
-    int update();
 
-     findById(Long id);
+    int save(Bills bills);
+
+    int update(Bills bills);
+
+    Bills findById(Long id);
 
     int deleteById(Long id);
 
-    List<Tutorial> findAll();
-
-    List<Tutorial> findByPublished(boolean published);
-
-    List<Tutorial> findByTitleContaining(String title);
-
+    List<Bills> findAll();
     int deleteAll();
+
+    List<Bills> findByItems(ItemsRepo itemsRepo);
 
 }
