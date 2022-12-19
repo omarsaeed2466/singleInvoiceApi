@@ -1,21 +1,17 @@
 package com.example.singleinvoiceapi;
 
-import Model.Login.Request;
-import Model.SingleInvoice.Customer;
-import Model.SingleInvoice.Discount;
-import Model.SingleInvoice.Items;
-import Model.SingleInvoice.ReqInvoiceImp;
+import com.example.singleinvoiceapi.SingleInvoice.Customer;
+import com.example.singleinvoiceapi.SingleInvoice.Discount;
+import com.example.singleinvoiceapi.SingleInvoice.Items;
+import com.example.singleinvoiceapi.SingleInvoice.ReqInvoiceImp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpringBootTest

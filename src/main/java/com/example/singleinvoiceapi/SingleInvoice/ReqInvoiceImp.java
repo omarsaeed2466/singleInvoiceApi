@@ -1,4 +1,4 @@
-package Model.SingleInvoice;
+package com.example.singleinvoiceapi.SingleInvoice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

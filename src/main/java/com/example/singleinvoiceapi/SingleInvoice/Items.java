@@ -1,11 +1,8 @@
-package Model.SingleInvoice;
+package com.example.singleinvoiceapi.SingleInvoice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
-import java.io.Serializable;
 @Data
 public class Items   {
     @JsonProperty("itemCode")

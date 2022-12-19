@@ -46,22 +46,22 @@ public class BillsJdbcRepostiory implements RequestRepository{
 
     @Override
     public int deleteById(Long id) {
-        return jdbcTemplate.update("DELETE FROM Bills WHERE id=?", id);
+        return jdbcTemplate.update("DELETE FROM BILLS_FAWRY WHERE id=?", id);
     }
 
     @Override
     public List<Bills> findAll() {
-        return jdbcTemplate.query("SELECT * from Bills", BeanPropertyRowMapper.newInstance(Bills.class));
+        return jdbcTemplate.query("SELECT * from BILLS_FAWRY", BeanPropertyRowMapper.newInstance(Bills.class));
     }
 
     @Override
     public int deleteAll() {
-        return jdbcTemplate.update("DELETE from Bills");
+        return jdbcTemplate.update("DELETE from BILLS_FAWRY");
     }
 
     @Override
     public List<Bills> findByItems(ItemsRepo itemsRepo) {
-        return jdbcTemplate.query("SELECT * from Bills WHERE ItemsRepo=?",
+        return jdbcTemplate.query("SELECT * from BILLS_FAWRY WHERE ITEMS=?",
                 BeanPropertyRowMapper.newInstance(Bills.class), itemsRepo);
     }
 }

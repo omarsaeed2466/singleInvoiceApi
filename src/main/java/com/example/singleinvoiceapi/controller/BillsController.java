@@ -1,21 +1,29 @@
-package controller;
+package com.example.singleinvoiceapi.controller;
 
 import com.example.singleinvoiceapi.Repository.Bills;
 import com.example.singleinvoiceapi.Repository.ItemsRepo;
 import com.example.singleinvoiceapi.Repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("https://atfawry.fawrystaging.com/invoice-api/invoices/single")
+@RequestMapping("/api")
 public class BillsController {
+  final  String url   = "https://atfawry.fawrystaging.com/invoice-api/invoices/single";
+    String token = "  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsidW0iLCJvcmRlciIsImludiIsIm1hY2MiLCJmcCIsImJlLXByb2ZpbGUiXSwic3ViIjoiYXRhbXNuMjUzQGdtYWlsLmNvbSIsInJsbSI6IkJFIiwiZnBhIjoiNDAwMDAwMDA5ODI2IiwidXN0IjoiQlVTSU5FU1NfRU5USVRZIiwiYmVpIjoxMDgzNCwiaXNzIjoiZmF3cnkuY29tIiwiZXhwIjoxNjc0OTcxODgxLCJpYXQiOjE2NzEzNzE4ODEsImp0aSI6IjM0MTM4N2QzLTJkMzktNDY5MC1iNmI1LWY2Nzc5NDljNzZiMiJ9.oEtDnYgzvVeQFEnNo-8OGyWckmpjrjlv2lFYHFZGYko";
+
+
     @Autowired
     RequestRepository requestRepository;
+
 
     @GetMapping("/Bills")
     public ResponseEntity<List<Bills>> getAllBills(@RequestParam(required = false) ItemsRepo itemsRepo) {
@@ -30,9 +38,12 @@ public class BillsController {
             }
             return new ResponseEntity<>(bills, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }  @GetMapping("/Bills/{id}")
+    }
+
+    @GetMapping("/Bills/{id}")
     public ResponseEntity<Bills> getBillsById(@PathVariable("id") long id) {
         Bills bills = requestRepository.findById(id);
 
@@ -46,12 +57,18 @@ public class BillsController {
     @PostMapping("/Bills")
     public ResponseEntity<String> createBills(@RequestBody Bills bills) {
         try {
+            RestTemplate restTemplate = new RestTemplate();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + token);
+            headers.setContentType(MediaType.APPLICATION_JSON);
             requestRepository.save(new Bills
                     (bills.getCustomer_name(), bills.getCustomer_mobil(), bills.getCustomer_email(),
                             bills.getAmount(),bills.getSENDING_DATE(),bills.getEXPIRY_DATE(), bills.getRELEASE_DATE(),bills.getBUSINESS_REFERENCE()
                             ,bills.getNOTE(),bills.getItemsRepo(),bills.getALERTMERCHANTUPON_EXPIRY(),bills.getCOMMUNICATION_METHOD(),
                             bills.getCOMMUNICATION_LANG(),bills.getPAYMENT_TYPE(),false));
             return new ResponseEntity<>("Bills was created successfully.", HttpStatus.CREATED);
+        //    ResponseEntity<Bills> response = restTemplate.getForEntity(url,Bills.class)
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -65,7 +82,7 @@ public class BillsController {
         Bills bills1 = requestRepository.findById(id);
 
         if (bills1 != null) {
-            bills1.setId(id);
+           bills1.setId(id);
             bills1.setCustomer_name(bills.getCustomer_name());
            bills1.setCustomer_email(bills.getCustomer_email());
            bills1.setCustomer_mobil(bills.getCustomer_mobil());
@@ -86,7 +103,7 @@ public class BillsController {
             return new ResponseEntity<>("Cannot find bills with id=" + id, HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/Bills/{id}")
+    @DeleteMapping("/Bills/{id}")
     public ResponseEntity<String> deleteBills(@PathVariable("id") long id) {
         try {
             int result = requestRepository.deleteById(id);
