@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class Items   {
+
     @JsonProperty("itemCode")
     private String itemCode ;
     @JsonProperty("purchasedQuantity")

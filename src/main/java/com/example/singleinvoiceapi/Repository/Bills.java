@@ -1,6 +1,7 @@
 package com.example.singleinvoiceapi.Repository;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Bills {
     @JsonProperty("id")
 private long id ;
@@ -39,8 +41,28 @@ private String Customer_name ;
     private String ALERTMERCHANTUPON_EXPIRY ;
     @JsonProperty("PAYMENT_TYPE")
     private String PAYMENT_TYPE ;
+    private String  FAWRY_REEF ;
 
 
-    public Bills(String customer_name, String customer_mobil, String customer_email, double amount, String sending_date, String expiry_date, String release_date, String business_reference, String note, List<ItemsRepo> itemsRepo, String alertmerchantupon_expiry, String communication_method, String communication_lang, String payment_type, boolean b) {
+
+    @Override
+    public String toString() {
+        return "Bills{" +
+                "id=" + id +
+                ", Customer_name='" + Customer_name + '\'' +
+                ", Customer_email='" + Customer_email + '\'' +
+                ", Customer_mobil='" + Customer_mobil + '\'' +
+                ", amount=" + amount +
+                ", SENDING_DATE='" + SENDING_DATE + '\'' +
+                ", EXPIRY_DATE='" + EXPIRY_DATE + '\'' +
+                ", RELEASE_DATE='" + RELEASE_DATE + '\'' +
+                ", BUSINESS_REFERENCE='" + BUSINESS_REFERENCE + '\'' +
+                ", NOTE='" + NOTE + '\'' +
+                ", COMMUNICATION_LANG='" + COMMUNICATION_LANG + '\'' +
+                ", COMMUNICATION_METHOD='" + COMMUNICATION_METHOD + '\'' +
+                ", itemsRepo=" + itemsRepo +
+                ", ALERTMERCHANTUPON_EXPIRY='" + ALERTMERCHANTUPON_EXPIRY + '\'' +
+                ", PAYMENT_TYPE='" + PAYMENT_TYPE + '\'' +
+                '}';
     }
 }

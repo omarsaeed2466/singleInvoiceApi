@@ -1,9 +1,10 @@
 package com.example.singleinvoiceapi.Repository;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class ItemsRepo {
@@ -19,21 +20,19 @@ public class ItemsRepo {
     private String NAMEEN ;
     @JsonProperty("NAMEAR ")
     private String NAMEAR ;
+    @JsonProperty("BILLS_NUM")
+    private int BILLS_NUM;
 
-    public ItemsRepo(String ITEM_CODE, int PURCHASED_QUANTITY, double PRICE, String NAMEEN, String NAMEAR) {
-        this.ITEM_CODE = ITEM_CODE;
-        this.PURCHASED_QUANTITY = PURCHASED_QUANTITY;
-        this.PRICE = PRICE;
-        this.NAMEEN = NAMEEN;
-        this.NAMEAR = NAMEAR;
-    }
-
-    public ItemsRepo(long items_id, String ITEM_CODE, int PURCHASED_QUANTITY, double PRICE, String NAMEEN, String NAMEAR) {
-        this.items_id = items_id;
-        this.ITEM_CODE = ITEM_CODE;
-        this.PURCHASED_QUANTITY = PURCHASED_QUANTITY;
-        this.PRICE = PRICE;
-        this.NAMEEN = NAMEEN;
-        this.NAMEAR = NAMEAR;
+    @Override
+    public String toString() {
+        return "ItemsRepo{" +
+                "items_id=" + items_id +
+                ", ITEM_CODE='" + ITEM_CODE + '\'' +
+                ", PURCHASED_QUANTITY=" + PURCHASED_QUANTITY +
+                ", PRICE=" + PRICE +
+                ", NAMEEN='" + NAMEEN + '\'' +
+                ", NAMEAR='" + NAMEAR + '\'' +
+                ", BILLS_NUM=" + BILLS_NUM +
+                '}';
     }
 }
